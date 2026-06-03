@@ -53,6 +53,7 @@ basic.forever(function () {
         I2C_LCD1602.ShowString("PPM:", 0, 0)
         I2C_LCD1602.ShowNumber(TDS, 6, 0)
         I2C_LCD1602.ShowString("ESTADO:NEGATIVO", 0, 1)
+        pins.digitalWritePin(DigitalPin.P1, 1)
         // Sonido de alerta
         for (let index = 0; index < 4; index++) {
             music.playTone(523, music.beat(BeatFraction.Half))
