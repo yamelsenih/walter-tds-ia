@@ -6,7 +6,8 @@
         "microphone": "*",
         "servo": "*",
         "i2cLCD1602": "github:makecode-extensions/i2clcd1602#v1.5.0",
-        "bluetooth": "*"
+        "bluetooth": "*",
+        "wuKong": "github:elecfreaks/pxt-wukong#v1.5.9"
     },
     "files": [
         "main.blocks",
