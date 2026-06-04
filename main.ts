@@ -23,7 +23,6 @@ bluetooth.startUartService()
 basic.forever(function () {
     // bluetooth.uartWriteString("" + TDS)
     I2C_LCD1602.clear()
-    wuKong.setMotorSpeed(wuKong.MotorList.M1, 100)
     // 1. Lectura del sensor TDS
     TDS = pins.analogReadPin(AnalogReadWritePin.P1)
     // Pequeña pausa para estabilizar la lectura analógica
@@ -54,7 +53,28 @@ basic.forever(function () {
         I2C_LCD1602.ShowString("PPM:", 0, 0)
         I2C_LCD1602.ShowNumber(TDS, 6, 0)
         I2C_LCD1602.ShowString("ESTADO:NEGATIVO", 0, 1)
-        pins.digitalWritePin(DigitalPin.P7, 1)
+        wuKong.setMotorSpeed(wuKong.MotorList.M1, 100)
+        // Pequeña pausa entre acciones de sonido y servo
+        basic.pause(2000)
+        wuKong.stopMotor(wuKong.MotorList.M1)
+        // Pequeña pausa entre acciones de sonido y servo
+        basic.pause(500)
+        wuKong.setMotorSpeed(wuKong.MotorList.M2, 100)
+        // Pequeña pausa entre acciones de sonido y servo
+        basic.pause(2000)
+        wuKong.stopMotor(wuKong.MotorList.M2)
+        // Pequeña pausa entre acciones de sonido y servo
+        basic.pause(500)
+        pins.digitalWritePin(DigitalPin.P3, 1)
+        // Pequeña pausa entre acciones de sonido y servo
+        basic.pause(2000)
+        pins.digitalWritePin(DigitalPin.P3, 0)
+        // Pequeña pausa entre acciones de sonido y servo
+        basic.pause(500)
+        pins.digitalWritePin(DigitalPin.P4, 1)
+        // Pequeña pausa entre acciones de sonido y servo
+        basic.pause(2000)
+        pins.digitalWritePin(DigitalPin.P4, 0)
         // Sonido de alerta
         for (let index = 0; index < 4; index++) {
             music.playTone(523, music.beat(BeatFraction.Half))
